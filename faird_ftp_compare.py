@@ -344,11 +344,10 @@ if __name__ == "__main__":
     # generate_test_csv_files()
 
     # 2. 开始测试
-
     faird_results = run_single_protocol_tests(faird_test, "FAIRD", TEST_DATASETS, RUN_TIMES)
     ftp_results = run_single_protocol_tests(ftp_test, "FTP", TEST_DATASETS, RUN_TIMES)
 
-    # 4. 结果分析
+    # 3. 结果分析
     faird_analysis = analyze_results(faird_results, "FAIRD")
     ftp_analysis = analyze_results(ftp_results, "FTP")
 
