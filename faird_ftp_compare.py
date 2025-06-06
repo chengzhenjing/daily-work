@@ -1,6 +1,8 @@
 import base64
 import os, sys
 import time
+from io import BytesIO
+
 import psutil
 import logging
 import ftplib
@@ -147,12 +149,13 @@ def faird_test(dataset):
         start_open = time.time()
 
         filename = dataset['dacp_url']
-        base64_str = conn.get_base64(filename)
-
-        encode_start = time.time()
-        decoded_data = base64.b64decode(base64_str)
-        encode_time = time.time() - encode_start
-        logger.info(f"filename: {filename}, Base64转换耗时: {encode_time:.3f}s")
+        buffer = BytesIO()
+        total_size = 0
+        for chunk in conn.get_dataframe_stream(filename):
+            buffer.write(chunk)
+            total_size += len(chunk)
+        logger.info(f"filename: {filename}, 接收的total_size: {total_size}")
+        file_data = buffer.getvalue()  # 拿到完整的二进制数据
 
         read_time = time.time() - start_open
         total_time = time.time() - start_connect
