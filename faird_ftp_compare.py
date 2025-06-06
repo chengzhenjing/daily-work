@@ -30,107 +30,92 @@ process = psutil.Process(os.getpid())
 # ===== 测试数据配置 =====
 TEST_DATASETS = [
     {
-        "name": "test_zip_01.zip", # 测试数据集名称
+        "name": "test_zip_01.zip", # 测试数据文件名称
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_zip_01.zip", # DACP URL
-        "local_path": "/root/downloaded_files/test_zip_01.zip", # 本地保存路径
         "ftp_path": "remote/path/test_zip_01.zip", # FTP 服务器上的路径
-        "description": "zip文件，大概180MB" # 数据集描述
+        "description": "zip文件，大概160MB" # 数据文件描述
     },
     {
         "name": "test_zip_02.zip",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_zip_02.zip",
-        "local_path": "/root/downloaded_files/test_zip_02.zip",
         "ftp_path": "remote/path/test_zip_02.zip",
-        "description": "zip文件，大概180MB"
+        "description": "zip文件，大概160MB"
     },
     {
         "name": "test_zip_03.zip",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_zip_03.zip",
-        "local_path": "/root/downloaded_files/test_zip_03.zip",
         "ftp_path": "remote/path/test_zip_03.zip",
-        "description": "zip文件，大概180MB"
+        "description": "zip文件，大概160MB"
     },
     {
         "name": "test_zip_04.zip",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_zip_04.zip",
-        "local_path": "/root/downloaded_files/test_zip_04.zip",
         "ftp_path": "remote/path/test_zip_04.zip",
-        "description": "zip文件，大概180MB"
+        "description": "zip文件，大概160MB"
     },
     {
         "name": "test_zip_05.zip",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_zip_05.zip",
-        "local_path": "/root/downloaded_files/test_zip_05.zip",
         "ftp_path": "remote/path/test_zip_05.zip",
-        "description": "zip文件，大概180MB"
+        "description": "zip文件，大概160MB"
     },
-{
+    {
         "name": "test_image_01.jpg",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_image_01.jpg",
-        "local_path": "/root/downloaded_files/test_image_01.jpg",
         "ftp_path": "remote/path/test_image_01.jpg",
         "description": "jpg文件，大概120MB"
     },
     {
         "name": "test_image_02.jpg",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_image_02.jpg",
-        "local_path": "/root/downloaded_files/test_image_02.jpg",
         "ftp_path": "remote/path/test_image_02.jpg",
         "description": "jpg文件，大概120MB"
     },
     {
         "name": "test_image_03.jpg",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_image_03.jpg",
-        "local_path": "/root/downloaded_files/test_image_03.jpg",
         "ftp_path": "remote/path/test_image_03.jpg",
         "description": "jpg文件，大概120MB"
     },
     {
         "name": "test_image_04.jpg",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_image_04.jpg",
-        "local_path": "/root/downloaded_files/test_image_04.jpg",
         "ftp_path": "remote/path/test_image_04.jpg",
         "description": "jpg文件，大概120MB"
     },
     {
         "name": "test_image_05.jpg",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_image_05.jpg",
-        "local_path": "/root/downloaded_files/test_image_05.jpg",
         "ftp_path": "remote/path/test_image_05.jpg",
         "description": "jpg文件，大概120MB"
     },
-{
+    {
         "name": "test_video_01.mov",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_video_01.mov",
-        "local_path": "/root/downloaded_files/test_video_01.mov",
         "ftp_path": "remote/path/test_video_01.mov",
         "description": "video文件，大概100MB"
     },
     {
         "name": "test_video_02.mov",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_video_02.mov",
-        "local_path": "/root/downloaded_files/test_video_02.mov",
         "ftp_path": "remote/path/test_video_02.mov",
         "description": "video文件，大概100MB"
     },
     {
         "name": "test_video_03.mov",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_video_03.mov",
-        "local_path": "/root/downloaded_files/test_video_03.mov",
         "ftp_path": "remote/path/test_video_03.mov",
         "description": "video文件，大概100MB"
     },
     {
         "name": "test_video_04.mov",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_video_04.mov",
-        "local_path": "/root/downloaded_files/test_video_04.mov",
         "ftp_path": "remote/path/test_video_04.mov",
         "description": "video文件，大概100MB"
     },
     {
         "name": "test_video_05.mov",
         "dacp_url": "dacp://10.0.89.38:3101/test/test_dataset/test_video_05.mov",
-        "local_path": "/root/downloaded_files/test_video_05.mov",
         "ftp_path": "remote/path/test_video_05.mov",
         "description": "video文件，大概100MB"
     }
@@ -173,7 +158,7 @@ def faird_test(dataset):
         total_time = time.time() - start_connect
 
         mem_after = get_mem_usage()
-        file_size_mb = get_file_size_mb(dataset['local_path'])
+        file_size_mb = get_file_size_mb(f"/tmp/{dataset['name']}")
 
         result = {
             "dataset_name": dataset['name'],
@@ -208,9 +193,13 @@ def ftp_test(dataset):
     """FTP测试"""
     logger.info(f"开始 FTP 测试: {dataset['description']}")
     mem_before = get_mem_usage()
-    local_temp_file = f"temp_{dataset['name']}"
+    local_temp_file = f"/tmp/{dataset['name']}"
 
     try:
+        # 清理重复测试的临时文件
+        if os.path.exists(local_temp_file):
+            os.remove(local_temp_file)
+
         start_connect = time.time()
         ftp = ftplib.FTP(FTP_HOST)
         ftp.login(user=FTP_USER, passwd=FTP_PASS)
@@ -218,16 +207,16 @@ def ftp_test(dataset):
 
         start_download = time.time()
         logger.info(f"ftp正在测试下载 {dataset['name']}")
-        with open("tmp/" + local_temp_file, 'wb') as f:
+        with open(local_temp_file, 'wb') as f:
             ftp.retrbinary(f"RETR {dataset['ftp_path']}", f.write)
         download_time = time.time() - start_download
 
-        with open("tmp/" + local_temp_file, 'rb') as f:
+        with open(local_temp_file, 'rb') as f:
             file_data = f.read()  # 读取整个文件到内存
 
         total_time = time.time() - start_connect
         mem_after = get_mem_usage()
-        file_size_mb = get_file_size_mb("tmp/" + local_temp_file)
+        file_size_mb = get_file_size_mb(local_temp_file)
 
         result = {
             "dataset_name": dataset['name'],
@@ -253,10 +242,6 @@ def ftp_test(dataset):
             "error": str(e),
             "success": False
         }
-
-        # 清理临时文件
-        if os.path.exists(local_temp_file):
-            os.remove(local_temp_file)
 
     logger.info(f"FTP 测试完成: {dataset['name']}")
     return result
@@ -344,15 +329,18 @@ if __name__ == "__main__":
     # generate_test_csv_files()
 
     # 2. 开始测试
-    faird_results = run_single_protocol_tests(faird_test, "FAIRD", TEST_DATASETS, RUN_TIMES)
+
     ftp_results = run_single_protocol_tests(ftp_test, "FTP", TEST_DATASETS, RUN_TIMES)
+    faird_results = run_single_protocol_tests(faird_test, "FAIRD", TEST_DATASETS, RUN_TIMES)
 
-    # 3. 结果分析
-    faird_analysis = analyze_results(faird_results, "FAIRD")
+
+    # 4. 结果分析
     ftp_analysis = analyze_results(ftp_results, "FTP")
+    faird_analysis = analyze_results(faird_results, "FAIRD")
 
-    print(f"faird_analysis: {faird_analysis}")
     print(f"ftp_analysis: {ftp_analysis}")
+    print(f"faird_analysis: {faird_analysis}")
+
 
     sys.exit(0)
 
